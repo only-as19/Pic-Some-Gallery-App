@@ -1,8 +1,10 @@
 
-const Image = ({img,getClass}) => {
+const Image = ({img,imageClass}) => {
   return (
-    <div>
-        Hello
+    <div className={`relative ${imageClass} rounded-lg ` }>
+        <img src={img.url}
+        className='block w-full h-full object-cover '
+        loading="lazy"  />
     </div>
   )
 }
