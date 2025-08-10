@@ -4,8 +4,10 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 const Header = () => {
   return (
     <div>
-      <NavLink to="/">Pic Some</NavLink>
-      <NavLink to="/cart"><FontAwesomeIcon icon={faCartShopping}/></NavLink>
+      <header className="p-6 bg-gray-500 text-white flex justify-between">
+        <NavLink className=" text-3xl font-bold hover:text-black transition-all duration-100 ease-in" to="/" >Pic Some</NavLink>
+        <NavLink className={ `text-3xl font-bold hover:text-black transition-all duration-100 ease-in `} to="/cart"><FontAwesomeIcon icon={faCartShopping}/></NavLink>
+      </header>
     </div>
   )
 }
