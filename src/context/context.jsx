@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 
 const ContextProvider = ({children}) => {
     const [allPhotos,setAllPhotos] = useState([])
+    const [cartItem,setCartItem] = useState([])
     useEffect(()=>{
         fetch("https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json")
         .then(response => response.json())
@@ -24,10 +25,18 @@ const ContextProvider = ({children}) => {
       setAllPhotos(uppdatedArr)
     }
 
+    const addToCart = (newItem)=>{
+      setCartItem(prev=> [...prev,newItem])
+    }
+
   return (
     <div>
-      <Context.Provider value={{allPhotos,
-        toggleFavorite
+      <Context.Provider value={
+        {
+          allPhotos,
+          toggleFavorite,
+          addToCart,
+          cartItem
       }}>
             {children}
       </Context.Provider>
@@ -35,13 +44,6 @@ const ContextProvider = ({children}) => {
   )
 }
 
-Image.prototype = {
-  imageClass: PropTypes.string,
-  img: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool
-  })
-}
+
 
 export default ContextProvider
