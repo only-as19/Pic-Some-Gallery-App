@@ -8,7 +8,7 @@ import PropTypes from "prop-types"
 
 const Image = ({img,imageClass}) => {
     const[isHovered,setIsHovered] = useState(false)
-    const {toggleFavorite,addToCart,cartItem} = useContext(Context)
+    const {toggleFavorite,addToCart,cartItem,removeFromCart} = useContext(Context)
     const IsAdded = cartItem.some(item=> item.id === img.id)
     console.log(IsAdded)
     
@@ -27,7 +27,7 @@ const Image = ({img,imageClass}) => {
     const shoppingIcon = ()=>{
       if(IsAdded){
         return <FontAwesomeIcon icon={faShoppingCart} 
-          className=" absolute z-10 right-3 top-3 text-[30px] text-blue-600" onClick={()=>addToCart(img)}
+          className=" absolute z-10 right-3 top-3 text-[30px] text-blue-600" onClick={()=>removeFromCart(img.id)}
         />
       }else if(isHovered){
         return <FontAwesomeIcon icon={faPlus} 
