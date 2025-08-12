@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 export const Context = createContext()
+import PropTypes from "prop-types"
 
 const ContextProvider = ({children}) => {
     const [allPhotos,setAllPhotos] = useState([])
@@ -32,6 +33,15 @@ const ContextProvider = ({children}) => {
       </Context.Provider>
     </div>
   )
+}
+
+Image.prototype = {
+  imageClass: PropTypes.string,
+  img: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool
+  })
 }
 
 export default ContextProvider
